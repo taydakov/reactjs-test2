@@ -1,8 +1,19 @@
 <!doctype html>
 <html>
 <head>
+  <script src="react.js"></script>
+  <script src="JSXTransformer.js"></script>
 </head>
 <body>
-  Hello, world!
+  <div id="container"></div>
+  <script type="text/jsx">
+    var HelloMessage = React.createClass({
+      render: function() {
+        return <div>Hello {this.props.name}</div>;
+      }
+    });
+
+    React.render(<HelloMessage name="world" />, document.getElementById("container"));
+  </script>
 </body>
 </html>
