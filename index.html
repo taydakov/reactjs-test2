@@ -13,7 +13,25 @@
       }
     });
 
-    React.render(<HelloMessage name="world" />, document.getElementById("container"));
+    var Counter = React.createClass({
+      getInitialState: function() {
+        return {count: 1};
+      },
+      tick: function() {
+        this.setState({count: this.state.count + 1});
+      },
+      componentDidMount: function() {
+        this.interval = setInterval(this.tick, 1000);
+      },
+      componentWillUnmount: function() {
+        clearInterval(this.interval);
+      },
+      render: function() {
+        return <div>Count: {this.state.count}</div>;
+      }
+    });
+
+    React.render(<Counter />, document.getElementById("container"));
   </script>
 </body>
 </html>
