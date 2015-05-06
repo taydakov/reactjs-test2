@@ -31,7 +31,18 @@
       }
     });
 
-    React.render(<Counter />, document.getElementById("container"));
+    var ToDoList = React.createClass({
+      render: function() {
+        var renderItem = function(item) {
+          return <li>{item}</li>;
+        };
+
+        return <ul>{this.props.items.map(renderItem)}</ul>;
+      }
+    });
+
+    var testItems = ['1', '22', '333', '4444'];
+    React.render(<ToDoList items={testItems} />, document.getElementById("container"));
   </script>
 </body>
 </html>
